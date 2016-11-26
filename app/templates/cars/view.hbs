@@ -1,0 +1,22 @@
+<div class="row ptop-80 pbottom-80">
+  <div class="row">
+    <div class="car-media col-xs-12">
+      <h3>{{model.name}}</h3>
+      <div class="col-sm-12 col-md-8 col-lg-8">
+        {{img-slider}}
+      </div>
+      <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="car-media__head">
+          <div class="car-media__price car-media__price--nonefloat">
+            <h4 class="car-media__price--colored {{unless model.price 'text-danger'}}">{{or model.price '0'}}</h4>
+            <h6> {{model.location}}</h6>
+          </div>
+        </div>
+        <div class="car-media__body">
+          {{model.description}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{outlet}}

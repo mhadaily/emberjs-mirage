@@ -1,0 +1,11 @@
+.imgSlider{
+  img{
+    max-width:100%;
+  }
+  .slider-nav img{
+    padding: 5px;
+  }
+  .carousel-control{
+    z-index: 99;
+  }
+}

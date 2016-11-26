@@ -1,0 +1,71 @@
+<div class="row ptop-80 pbottom-80">
+  <div class="container">
+    <div class="row pbottom-80">
+      <div id="custom-search-input">
+        <div class="input-group col-md-12">
+          {{input value=search placeholder=(t 'search') class="search-query form-control"}}
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button" {{action "queryChanged"}}> <i class="fa fa-search"></i></button>
+           </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    {{refine-search}}
+  </div>
+  <div class="col-sm-12 col-md-9">
+    {{#if model.loading}}
+      <div class="text-xs-center">
+        {{spinner-waiting}}
+      </div>
+    {{else}}
+      {{#unless model.length}}
+        <div class="card card-outline-danger text-xs-center">
+          <div class="card-block">
+            <blockquote class="card-blockquote">
+              <p>  {{t 'nothingToShow'}}</p>
+            </blockquote>
+          </div>
+        </div>
+      {{else}}
+        {{#each model as |car|}}
+          <div class="row">
+            <div class="car-media col-xs-12">
+              <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="car-media__figure">
+                  <img class="car-media__thumbnail" src="{{car.thumbnail}}"
+                       alt="{{car.name}}">
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-8 col-lg-8">
+                <div class="car-media__head">
+                  <h4>{{car.name}}</h4>
+                  <div class="car-media__price">
+                    <h4 class="car-media__price--colored {{unless car.price 'text-danger'}}">{{or car.price '0'}}</h4>
+                  </div>
+                </div>
+                <div class="car-media__body">
+                  {{shorten-text car.description}}
+                </div>
+                <div class="car-media__button">
+                  {{#link-to 'cars.view' car class="pull-right btn btn-outline-danger"}}
+                    {{t 'viewDetail'}} <span class="fa fa-angle-right"></span>
+                  {{/link-to}}
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{/unless}}
+    {{/if}}
+
+    <div class="col-xs-12 text-xs-center">
+      {{page-numbers content=model showFL=true}}
+      <div>
+        {{t 'page'}}: {{page}}  {{t 'of'}} {{model.meta.total_pages}} - {{t 'total'}}: {{model.meta.total_count}}
+      </div>
+    </div>
+    {{outlet}}
+  </div>
+</div>

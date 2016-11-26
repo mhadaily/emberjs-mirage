@@ -1,0 +1,8 @@
+.footer__logoWidget {
+  @include rem-fallback(padding, 0.9, 0, 0, 0);
+  &--gray {
+    max-width: 220px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+}
