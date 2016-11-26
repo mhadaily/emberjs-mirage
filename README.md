@@ -6,6 +6,10 @@ This application is live as a demo at [Mirage API Server with EmberJS on AWS S3]
 
 To get started please consider following steps: 
 
+####Note
+I have included all of the dependencies in build process to show better understanding of the result.
+However, Mirage should be included in real build production.
+
 ##Packages
 I have implemented ember-i18n for multilingual purpose and ember-sass and ember-sass-pod to organize better css code. For more information, please read Package.json devDependencies. If you have any question please feel free to drop me an email. 
 
